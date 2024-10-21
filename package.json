@@ -1,0 +1,39 @@
+{
+  "name": "kyonebot",
+  "version": "1.0.0",
+  "description": "Discord bot developed by kayqueambires",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "prettier --write \"**/*.js\""
+  },
+  "keywords": [
+    "discord",
+    "music",
+    "bot"
+  ],
+  "author": "Kayque Ambires Silveira",
+  "license": "MIT",
+  "dependencies": {
+    "@discord-player/extractor": "^4.4.1",
+    "@discordjs/opus": "^0.9.0",
+    "@distube/ytdl-core": "4.14.4",
+    "axios": "^1.7.7",
+    "canvas": "^2.11.2",
+    "conf": "^12.0.0",
+    "discord-player": "^6.7.1",
+    "discord.js": "^14.12.1",
+    "dotenv": "^16.3.1",
+    "ffmpeg": "0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "ms": "^2.1.3",
+    "opusscript": "0.0.8",
+    "prism-media": "^1.3.5",
+    "ytdl-core": "^4.11.5"
+  },
+  "devDependencies": {
+    "prettier": "3.0.2"
+  }
+}
