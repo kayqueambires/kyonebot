@@ -5,10 +5,23 @@ import Client from './client/Client.js';
 import { Player } from 'discord-player';
 import config from './config.json' assert { type: 'json' };
 import { EmbedBuilder } from 'discord.js';
+import express from 'express';
+
+const app = express()
+const port = process.env.PORT || 4000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 
 // Inicializar cliente e comandos
 const client = new Client(config);
 client.commands = new Collection();
+
 
 const commandFiles = readdirSync('./commands').filter((file) =>
   file.endsWith('.js')
