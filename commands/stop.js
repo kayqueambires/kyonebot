@@ -4,7 +4,7 @@ import { isInVoiceChannel } from '../utils/voicechannel.js';
 
 export default {
     name: 'stop',
-    description: 'Para todas as músicas na fila!',
+    description: 'Para todas as músicas na fila!', // Stop all the songs in the queue
     async execute(interaction) {
         const inVoiceChannel = isInVoiceChannel(interaction);
         if (!inVoiceChannel) {

@@ -14,7 +14,7 @@ function getIconURL(source) {
 
 export default {
   name: 'nowplaying',
-  description: 'Veja a música que está tocando no momento.',
+  description: 'Veja a música que está tocando no momento.', // Get the current playing track
   async execute(interaction) {
     const inVoiceChannel = isInVoiceChannel(interaction);
     if (!inVoiceChannel) {

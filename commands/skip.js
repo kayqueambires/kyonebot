@@ -4,7 +4,7 @@ import { isInVoiceChannel } from '../utils/voicechannel.js';
 
 export default {
   name: 'skip',
-  description: 'Pule uma música!',
+  description: 'Pule uma música!', // Skip a track
   async execute(interaction) {
     const inVoiceChannel = isInVoiceChannel(interaction);
     if (!inVoiceChannel) {

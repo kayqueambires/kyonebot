@@ -1,5 +1,6 @@
 import { GuildMember, EmbedBuilder } from 'discord.js';
 
+// Check if the user is in a voice channel and if they are in the same channel as the bot
 export const isInVoiceChannel = (interaction) => {
     if (!(interaction.member instanceof GuildMember) || !interaction.member.voice.channel) {
         const embedError = new EmbedBuilder()

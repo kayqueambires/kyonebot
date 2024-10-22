@@ -5,7 +5,7 @@ import Conf from 'conf';
 
 export default {
   name: 'volume',
-  description: 'Muda o volume!',
+  description: 'Muda o volume!', // Change the volume
   options: [
     {
       name: 'volume',

@@ -6,11 +6,11 @@ import { Player } from 'discord-player';
 import config from './config.json' assert { type: 'json' };
 import { EmbedBuilder } from 'discord.js';
 
-// Inicializar cliente e comandos
+// Initialize client and commands
 const client = new Client(config);
 client.commands = new Collection();
 
-
+// Load command files
 const commandFiles = readdirSync('./commands').filter((file) =>
   file.endsWith('.js')
 );
@@ -20,9 +20,11 @@ for (const file of commandFiles) {
 }
 
 client.on('messageCreate', async (message) => {
+  // Ignore bot messages and non-guild messages
   if (message.author.bot || !message.guild) return;
   if (!client.application?.owner) await client.application?.fetch();
 
+  // Deploy commands if the message is from the owner
   if (
     message.content === '!deploy' &&
     message.author.id === client.application?.owner?.id
@@ -58,6 +60,7 @@ client.on('interactionCreate', async (interaction) => {
   const command = client.commands.get(interaction.commandName.toLowerCase());
 
   try {
+    // Execute command based on its type
     if (
       interaction.commandName == 'ban' ||
       interaction.commandName == 'userinfo'
@@ -81,16 +84,16 @@ client.on('interactionCreate', async (interaction) => {
   }
 });
 
-// Inicializar player
+// Initialize player
 const player = new Player(client);
 
-// Carregar extractors
+// Load extractors for the player
 player.extractors
   .loadDefault()
   .then(() => console.log('Extractors loaded successfully'))
   .catch((error) => console.error('Error loading extractors:', error));
 
-// Carregar eventos
+// Load event handlers
 import('./events/playerEvents.js').then(({ default: handlePlayerEvents }) =>
   handlePlayerEvents(player)
 );

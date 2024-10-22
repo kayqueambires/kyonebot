@@ -2,7 +2,7 @@ import { ApplicationCommandOptionType, EmbedBuilder } from 'discord.js';
 
 export default {
     name: 'userinfo',
-    description: 'Obtenha informações sobre um usuário.',
+    description: 'Obtenha informações sobre um usuário.', // Get information about a user
     options: [
         {
             name: 'user',

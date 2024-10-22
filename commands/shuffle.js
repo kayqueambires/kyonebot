@@ -4,7 +4,7 @@ import { isInVoiceChannel } from '../utils/voicechannel.js';
 
 export default {
   name: 'shuffle',
-  description: 'Embaralha a fila de músicas!',
+  description: 'Embaralha a fila de músicas!', // Shuffles the queue
   async execute(interaction) {
     const inVoiceChannel = isInVoiceChannel(interaction);
     if (!inVoiceChannel) {

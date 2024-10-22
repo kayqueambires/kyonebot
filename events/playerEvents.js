@@ -1,5 +1,6 @@
 import { EmbedBuilder } from 'discord.js';
 
+// Get the icon URL based on the source of the track
 function getIconURL(source) {
   const iconPath = {
     spotify: 'https://cdn-icons-png.flaticon.com/128/3669/3669986.png',
@@ -11,6 +12,7 @@ function getIconURL(source) {
 }
 
 export default (player) => {
+  // Triggered when a track starts playing
   player.events.on('playerStart', (queue, track) => {
     const author = queue.metadata.author;
 
@@ -31,6 +33,7 @@ export default (player) => {
     queue.metadata.channel.send({ embeds: [embed] });
   });
 
+  // Error handling during playback
   player.events.on('error', (queue, error) => {
     console.log(`[${queue.guild.name}] Ocorreu um erro na conexão: ${error.message}`);
     const embed = new EmbedBuilder()
@@ -39,6 +42,7 @@ export default (player) => {
     queue.metadata.channel.send({ embeds: [embed] });
   });
 
+  // Triggered when the bot is disconnected from the voice channel
   player.events.on('disconnect', (queue) => {
     const embed = new EmbedBuilder()
       .setColor('#ff0000')
@@ -46,6 +50,7 @@ export default (player) => {
     queue.metadata.channel.send({ embeds: [embed] });
   });
 
+  // Triggered when the voice channel becomes empty
   player.events.on('emptyChannel', (queue) => {
     const embed = new EmbedBuilder()
       .setColor('#ff0000')
@@ -53,11 +58,12 @@ export default (player) => {
     queue.metadata.channel.send({ embeds: [embed] });
   });
 
+  // Triggered when the queue is empty
   player.events.on('emptyQueue', (queue) => {
     const embed = new EmbedBuilder()
       .setColor('#00ff00')
       .setDescription('✅ | Fim da fila!');
     queue.metadata.channel.send({ embeds: [embed] });
-    queue.delete();
+    queue.delete(); // Clears the queue
   });
 };

@@ -3,16 +3,16 @@ import { EmbedBuilder } from 'discord.js';
 
 export default {
   name: 'help',
-  description: 'Lista todos os comandos disponíveis.',
+  description: 'Lista todos os comandos disponíveis.', // List all available commands
   async execute(interaction) {
     const helpEmbed = new EmbedBuilder()
-      .setColor('#0099ff') 
+      .setColor('#0099ff')
       .setTitle('Ajuda - Comandos Disponíveis')
       .setDescription('Aqui estão os comandos disponíveis no bot:')
       .setTimestamp()
       .setFooter({ text: 'Kyonebot - Seus comandos!' });
 
-    // Carrega todos os comandos da pasta ./commands
+    // Load all command files from the ./commands directory
     const commandFiles = readdirSync('./commands').filter(file => file.endsWith('.js'));
 
     for (const file of commandFiles) {

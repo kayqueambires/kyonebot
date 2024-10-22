@@ -5,7 +5,7 @@ import Conf from 'conf';
 
 export default {
   name: 'play',
-  description: 'Toca uma música no seu canal!',
+  description: 'Toca uma música no seu canal!', // Play a song in your voice channel
   options: [
     {
       name: 'query',
@@ -36,7 +36,7 @@ export default {
 
       const config = new Conf({ projectName: 'volume' });
 
-      // Adiciona a faixa ou playlist à fila e toca
+      // Adds the track to the queue
       await player.play(interaction.member.voice.channel.id, searchResult, {
         nodeOptions: {
           metadata: {
@@ -54,7 +54,6 @@ export default {
       });
 
 
-      // Mensagem de feedback
       if (searchResult.playlist) {
         const embed = new EmbedBuilder()
           .setColor('#0099ff')

@@ -4,7 +4,7 @@ import { isInVoiceChannel } from '../utils/voicechannel.js';
 
 export default {
     name: 'loop',
-    description: 'Define o modo de repetição',
+    description: 'Define o modo de repetição', // Defines the loop mode
     options: [
         {
             name: 'modo',
@@ -53,6 +53,7 @@ export default {
 
             const loopMode = interaction.options.getInteger('modo');
             queue.setRepeatMode(loopMode);
+
             const mode =
                 loopMode === QueueRepeatMode.TRACK ? '🔂' : loopMode === QueueRepeatMode.QUEUE ? '🔁' : '▶';
 

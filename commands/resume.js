@@ -3,7 +3,7 @@ import { isInVoiceChannel } from "../utils/voicechannel.js";
 
 export default {
     name: 'resume',
-    description: 'Retoma a música atual!',
+    description: 'Retoma a música atual!', // Resume the current track
     async execute(interaction) {
         const inVoiceChannel = isInVoiceChannel(interaction);
         if (!inVoiceChannel) {

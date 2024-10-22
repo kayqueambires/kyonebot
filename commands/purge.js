@@ -2,7 +2,7 @@ import { EmbedBuilder } from 'discord.js';
 
 export default {
     name: 'purge',
-    description: 'Deleta as últimas mensagens em todos os chats.',
+    description: 'Deleta as últimas mensagens em todos os chats.', // Delete messages in a channel
     options: [
         {
             name: 'num',

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default {
   name: 'game',
-  description: 'Obtém informações detalhadas de uma partida do League of Legends.',
+  description: 'Obtém informações detalhadas de uma partida do League of Legends.', // Get detailed information about a League of Legends match
   options: [
     {
       name: 'gameid',
@@ -18,6 +18,7 @@ export default {
     const region = 'americas';
 
     try {
+      // Fetch match data from Riot API
       const response = await axios.get(`https://${region}.api.riotgames.com/lol/match/v5/matches/BR1_${matchId}`, {
         headers: {
           'X-Riot-Token': apiKey,
@@ -26,17 +27,17 @@ export default {
 
       const matchData = response.data;
 
-      // Filtrar jogadores
+      // Filter players by team
       const blueTeam = matchData.info.participants.filter(p => p.teamId === 100);
       const redTeam = matchData.info.participants.filter(p => p.teamId === 200);
 
-      // Estatísticas gerais
+      // Match duration and winner team
       const gameDurationSeconds = matchData.info.gameDuration;
       const gameDuration = `${Math.floor(gameDurationSeconds / 60)}m ${gameDurationSeconds % 60}s`;
       const winnerTeamId = matchData.info.teams.find(team => team.win).teamId;
       const winner = winnerTeamId === 100 ? "Blue Side" : "Red Side";
 
-      // Estatísticas de cada time
+      // Stats for each team
       const blueStats = {
         kills: blueTeam.reduce((acc, player) => acc + player.kills, 0),
         deaths: blueTeam.reduce((acc, player) => acc + player.deaths, 0),
@@ -48,7 +49,7 @@ export default {
         assists: redTeam.reduce((acc, player) => acc + player.assists, 0),
       };
 
-      // Criação da estrutura de dados
+      // Format match data
       const formattedMatchData = {
         GameDuration: gameDuration,
         Winner: winner,
@@ -75,7 +76,7 @@ export default {
         GameTimestamp: new Date(matchData.info.gameStartTimestamp).toLocaleString()
       };
 
-      // Criar um buffer a partir do JSON formatado e enviar
+      // Send the formatted data as a JSON file
       const jsonBuffer = Buffer.from(JSON.stringify(formattedMatchData, null, 2));
       await interaction.reply({
         files: [{

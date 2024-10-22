@@ -4,7 +4,7 @@ import { isInVoiceChannel } from '../utils/voicechannel.js';
 
 export default {
   name: 'pause',
-  description: 'Pausa a música atual!',
+  description: 'Pausa a música atual!', // Pauses the current track
   async execute(interaction) {
     try {
       const inVoiceChannel = isInVoiceChannel(interaction);
